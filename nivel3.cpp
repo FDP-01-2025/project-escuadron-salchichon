@@ -37,7 +37,7 @@ bool nivel3() {
     }
 
     if (victorias >= 2) {
-        mensajeFinal("🃏 Has ganado el duelo de cartas.");
+        mensajeFinal(" Has ganado el duelo de cartas.");
         return true;
     } else {
         return false;
