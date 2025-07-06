@@ -3,7 +3,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <conio.h>
 
 using namespace std;
 
@@ -15,8 +14,9 @@ bool nivel3() {
     pause(1500);
     imprimirLento("Cada jugador saca una carta (1 al 13). El más alto gana 2 de 3 rondas.", 30);
     pause(1500);
-    cout << "\nPresiona una tecla para comenzar el duelo...\n";
-    getch();
+    cout << "\nPresiona ENTER para comenzar el duelo...\n";
+    cin.ignore();
+    cin.get();
     clearScreen();
 
     srand(time(0));
@@ -37,7 +37,7 @@ bool nivel3() {
     }
 
     if (victorias >= 2) {
-        mensajeFinal(" Has ganado el duelo de cartas.");
+        mensajeFinal("🃏 Has ganado el duelo de cartas.");
         return true;
     } else {
         return false;

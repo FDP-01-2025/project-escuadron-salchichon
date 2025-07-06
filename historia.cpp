@@ -1,7 +1,6 @@
 #include "historia.h"
 #include "utils.h"
 #include <iostream>
-#include <conio.h>
 
 using namespace std;
 
@@ -15,8 +14,9 @@ void introduccion() {
     pause(2000);
     imprimirLento("Ahora, Chepe debe escapar, recuperar pruebas y limpiar su nombre.", 30);
     pause(2000);
-    cout << "\nPresiona una tecla para comenzar...\n";
-    getch();
+    cout << "\nPresiona ENTER para comenzar...";
+    cin.ignore();
+    cin.get();
     clearScreen();
 }
 

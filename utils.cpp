@@ -1,33 +1,36 @@
 #include "utils.h"
 #include <iostream>
-#include <windows.h>
-#include <conio.h>
-#include <string>
+#include <thread>
+#include <chrono>
+
+using namespace std;
 
 void clearScreen() {
-    system("cls");
+    cout << "\033[2J\033[1;1H";
 }
 
 void pause(int ms) {
-    Sleep(ms);
+    this_thread::sleep_for(chrono::milliseconds(ms));
 }
 
 void gameOver(const char* motivo) {
-    std::cout << "\n--- GAME OVER: " << motivo << " ---\nPresiona cualquier tecla para salir...";
-    getch();
+    cout << "\n--- GAME OVER: " << motivo << " ---\nPresiona ENTER para salir...";
+    cin.ignore();
+    cin.get();
     exit(0);
 }
 
 void mensajeFinal(const char* msg) {
-    std::cout << msg << "\n\nPresiona cualquier tecla para continuar... ";
-    getch();
+    cout << msg << "\n\nPresiona ENTER para continuar...";
+    cin.ignore();
+    cin.get();
     clearScreen();
 }
 
-void imprimirLento(const std::string& texto, int velocidad) {
+void imprimirLento(const string& texto, int velocidad) {
     for (char c : texto) {
-        std::cout << c << std::flush;
-        Sleep(velocidad);
+        cout << c << flush;
+        pause(velocidad);
     }
-    std::cout << std::endl;
+    cout << endl;
 }

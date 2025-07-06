@@ -3,7 +3,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <conio.h>
 
 using namespace std;
 
@@ -15,8 +14,9 @@ void nivel1() {
     pause(1500);
     imprimirLento("Decide ir al campo a buscar un arma escondida para defenderse.", 30);
     pause(1500);
-    cout << "\nPresiona una tecla para buscar el arma...\n";
-    getch();
+    cout << "\nPresiona ENTER para buscar el arma...\n";
+    cin.ignore();
+    cin.get();
     clearScreen();
 
     srand(time(0));

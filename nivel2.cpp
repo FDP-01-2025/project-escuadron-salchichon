@@ -1,12 +1,9 @@
+#include "nivel2.h"
 #include "utils.h"
 #include <iostream>
-#include <cstdlib>
-#include <windows.h>
-#include <conio.h>
-#include <string>  
+#include <string>
 
 using namespace std;
-
 
 bool nivel2() {
     clearScreen();
@@ -20,8 +17,9 @@ bool nivel2() {
     pause(1500);
     imprimirLento("¿Podria ser acaso.......?", 30);
     pause(1500);
-    cout << "\nPresiona una tecla para intentar ingresar...\n";
-    getch();
+    cout << "\nPresiona ENTER para intentar ingresar...\n";
+    cin.ignore();
+    cin.get();
     clearScreen();
 
     string palabra = "resistencia";
