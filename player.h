@@ -7,7 +7,7 @@ using namespace std;
 struct Player {
     string name;
     int score;
-    int lives;  //  Este campo es el que faltaba
+    int lives;  
 };
 
 #endif
