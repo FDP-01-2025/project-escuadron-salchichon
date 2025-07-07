@@ -1,14 +1,14 @@
 #ifndef JUEGO_H
 #define JUEGO_H
 
-extern const int FILAS;
-extern const int COLUMNAS;
-extern const int MINAS;
-
-void inicializarTablero();
-void colocarMinas();
-int contarMinasAlrededor(int x, int y);
-void mostrarTablero();
-bool jugar(int x, int y);
+extern const int ROWS;
+extern const int COLUMNS;
+extern const int MINES;
+//All the fuctions used in the final game
+void initializeBoard();
+void putMines();
+int countNearbyMines(int x, int y);
+void showBoard();
+bool play(int x, int y);
 
 #endif

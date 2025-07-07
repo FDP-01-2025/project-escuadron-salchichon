@@ -1,39 +1,48 @@
 #include "nivel1.h"
 #include "utils.h"
+#include "gamestate.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 
 using namespace std;
 
-void nivel1() {
-    clearScreen();
-    imprimirLento(" NIVEL 1: Búsqueda del cuchillo\n", 40);
+// Level 1: Search of a hidden knife
+bool level1(GameState& state) {
+    slowPrint(" LEVEL 1: Knife Search\n", 40);
     pause(1000);
-    imprimirLento("Chepe se entera de que ha sido acusado injustamente...", 30);
+    slowPrint(state.playerName + " finds out he has been falsely accused...", 30);
     pause(1500);
-    imprimirLento("Decide ir al campo a buscar un arma escondida para defenderse.", 30);
+    slowPrint("He decides to go to the field to look for a hidden weapon to defend himself.", 30);
     pause(1500);
-    cout << "\nPresiona ENTER para buscar el arma...\n";
+    
+    cout << "\nPress ENTER to search for the weapon...\n";
     cin.ignore();
     cin.get();
-    clearScreen();
 
-    srand(time(0));
-    int correcto = rand() % 3 + 1;
-    int lugar;
+    srand(time(0));  // Seed random number generator
+    int correct = rand() % 3 + 1;  // Randomly decide the correct hiding place 
+    int place;
 
-    cout << "¿Dónde buscas?\n"
-         << "1) Debajo de un árbol\n"
-         << "2) Tras una roca grande\n"
-         << "3) En la entrada de una cueva\n"
-         << "Elige 1, 2 o 3: ";
-    cin >> lugar;
+    cout << "Where do you search?\n"
+         << "1) Under a tree\n"
+         << "2) Behind a big rock\n"
+         << "3) At the entrance of a cave\n"
+         << "Choose 1, 2 or 3: ";
+    cin >> place;
 
-    if (lugar == correcto) {
-        cout << "\n¡Excelente! Has encontrado el cuchillo.\n";
-        mensajeFinal(" NIVEL 1 COMPLETADO");
+    if (place == correct) {
+        slowPrint("\nExcellent! You found the knife... but while hiding it, you were captured.\n", 30);
+        pause(1000);
+        state.currentStage = 1;  // Mark level 1 as completed
+        saveProgress(state);
+        finalMessage(" LEVEL 1 COMPLETED");
+        return true;  // Success
     } else {
-        gameOver("Elegiste mal y fuiste capturado por patrullas militares.");
+        slowPrint("\nYou chose wrong and were captured by military patrols.\n", 30);
+        pause(1000);
+        state.honor -= 15;  // Penalize honor for failure
+        saveProgress(state);
+        return false;  // Failure
     }
 }

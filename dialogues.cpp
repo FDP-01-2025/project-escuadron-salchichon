@@ -182,7 +182,8 @@ int main() {
    }
   
    cout << "\n That kid was surely a thing...You keep walking..but, in a moment...you see it..soldiers in the town.";
-   cout << "You just need to see one to know they are there for you...And you do not hide any weapon..and then..He sees you";
+   cout << "You just need to see one to know they are there for you...And you do not have any weapon..and then..He sees you";
+   cout << "You run...what else could you do? But then...you remeber, in the forest, you did hide some weapons..."
 
 
   return 0;

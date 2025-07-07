@@ -5,32 +5,31 @@
 
 using namespace std;
 
-void clearScreen() {
-    cout << "\033[2J\033[1;1H";
-}
-
+// Pause execution for given milliseconds
 void pause(int ms) {
     this_thread::sleep_for(chrono::milliseconds(ms));
 }
 
-void gameOver(const char* motivo) {
-    cout << "\n--- GAME OVER: " << motivo << " ---\nPresiona ENTER para salir...";
+// Show game over message and exit program if you lose in the mine field
+void gameOver(const char* reason) {
+    cout << "\n--- GAME OVER: " << reason << " ---\nPress ENTER to exit...";
     cin.ignore();
     cin.get();
     exit(0);
 }
 
-void mensajeFinal(const char* msg) {
-    cout << msg << "\n\nPresiona ENTER para continuar...";
+// Show a final message and wait for user to press ENTER
+void finalMessage(const char* msg) {
+    cout << msg << "\n\nPress ENTER to continue...";
     cin.ignore();
     cin.get();
-    clearScreen();
 }
 
-void imprimirLento(const string& texto, int velocidad) {
-    for (char c : texto) {
+// Print text slowly, character by character, with delay in milliseconds
+void slowPrint(const string& text, int speed) {
+    for (char c : text) {
         cout << c << flush;
-        pause(velocidad);
+        pause(speed);
     }
     cout << endl;
 }

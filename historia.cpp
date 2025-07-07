@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// This fuction is for a small introduction before the game starts
 void introduction(GameState &state)
 {
     slowPrint(" HISTORY OF CHEPE DUTY\n", 40);
@@ -20,21 +21,28 @@ void introduction(GameState &state)
     cin.get();
 }
 
+// This appears when you beat the Mine field.
 void goodFinal(GameState &state)
 {
     slowPrint("Congratulations!", 30);
-    slowPrint(state.playerName = " managed to cross the minefield and found the documents that prove his innocence.", 30);
+    slowPrint(state.playerName + " managed to cross the minefield and found the documents that prove his innocence.", 30);
     slowPrint("The people now know the truth. Justice has triumphed!", 30);
     pause(3000);
 }
 
+// This appears when you lose the Mine field.
 void badFinal(const string &reazon)
 {
-    gameOver(("Failed: " + reazon).c_str());
+    gameOver(("You failed the duty...: " + reazon).c_str());
 }
 
-void storyStart(GameState &state)
-{
+// This one is to show the first part ot the story
+void storyStart(GameState &state){
+    int option;
+    int coffee;
+    int fight = 0;
+    
+    // This are two structs used in this part
     struct Soldier
     {
         string name;
@@ -49,10 +57,6 @@ void storyStart(GameState &state)
         int age;
     };
 
-    int option;
-    int coffee;
-    int fight = 0;
-
     Soldier alberto;
     alberto.name = "Albert";
     alberto.weaponType = "Pistol";
@@ -62,6 +66,8 @@ void storyStart(GameState &state)
     luis.name = "Luis";
     luis.weapon = "none";
     luis.age = 12;
+
+    // The first dialogues and choices to make
 
     slowPrint("\n It was early in the morning, you were still half asleep.\n", 30);
     pause(1000);
@@ -81,6 +87,8 @@ void storyStart(GameState &state)
     slowPrint("Choose an option (1 or 2): ", 30);
     pause(1000);
     cin >> option;
+
+    //First interaction in game, a switch to see if you open or no
 
     switch (option)
     {
@@ -139,6 +147,8 @@ void storyStart(GameState &state)
     slowPrint(" asks you if you want a coffee to swallow all of this... Accept a coffee? (1.Yes/2.No)", 30);
     cin >> coffee;
 
+    // Another choice, stil with Albert, this time for coffee
+
     switch (coffee)
     {
     case 1:
@@ -173,6 +183,8 @@ void storyStart(GameState &state)
         break;
     }
 
+    // After those choices, the game leads you to a third one ehile giving context
+
     slowPrint("\n Now, you find yourself walking alone in the forest, on your way to the town... when something suddenly hits you.", 30);
     pause(1000);
     slowPrint("\nIt is a kid... trying to steal from you... without a weapon.", 30);
@@ -181,12 +193,14 @@ void storyStart(GameState &state)
     pause(1000);
     cin >> fight;
 
+    //First encounter with a major decition, give or hit.
+
     switch (fight)
     {
     case 1:
         slowPrint("\nYou decide to give this kid some money... he does not fight and leaves.", 30);
         pause(1000);
-        if (state.honor > -300 && state.honor <= 100)
+        if (state.honor > -200 && state.honor <= 100)
         {
             state.honor += 10;
             saveProgress(state);
@@ -212,6 +226,8 @@ void storyStart(GameState &state)
         break;
     }
 
+    //Some more context and end of the first part, before the levels
+
     slowPrint("\n That kid was surely something... You keep walking, but in a moment, you see them... soldiers in the town.", 30);
     pause(1000);
     slowPrint("\nYou just need to see one to know they are there for you... And you do not have any weapon... and then... He sees you.", 30);
@@ -220,9 +236,13 @@ void storyStart(GameState &state)
     pause(1000);
 }
 
-void storyContinuation(GameState &state)
-{
-    if (state.honor >= 50)
+
+    //After the first level, this fuction shows what goes next
+void storyContinuation(GameState &state){
+
+    //Just a small if, uses the honor to see how good person you are
+
+    if (state.honor >= 25)
     {
         slowPrint("That forest experience was something...and now, you are in their hands...", 30);
         pause(1000);
@@ -240,9 +260,14 @@ void storyContinuation(GameState &state)
         slowPrint("In a moment...you free from them...but to scape now, you need the key in the main house...Cristiani's house", 30);
         pause(1000);
     }
+
+    //Last lline before the continuation ends
+
     slowPrint("In a blink of an eye...you are near Cristiani's door...", 30);
     pause(1000);
 }
+
+    // We are near the story end, this next part goes after the second level
 
 void almostFinal(GameState &state)
 {
@@ -252,8 +277,12 @@ void almostFinal(GameState &state)
     pause(1000);
 }
 
+    //And now, the end is near, and this fuction shows it
+
 void Final(GameState &state)
 {
+
+    //We have the strcut for Cristiani, the final boss
 
     struct Cristiani
     {
@@ -266,12 +295,14 @@ void Final(GameState &state)
     Cristiani p;
     p.name = "Cristiani";
     p.cweapon = "Hands";
-    int damage = 0.5;
-    int health = 10;
+    p.damage = 0.5;
+    p.health = 10;
 
     int coward;
     char shoot;
     int battle;
+
+    //All of this goes after the third level, here, you run home
 
     slowPrint("And now...you are outside his house...you walk outside the base..but as you step outside...the soldiers start running at you", 30);
     pause(1000);
@@ -282,27 +313,27 @@ void Final(GameState &state)
     slowPrint("As you arrive...you see Albert, holding a shootgun.", 30);
     pause(1000);
 
+    //In this part, if you did good with Albert, he will help you if you need it
+
     if (state.friendship >= 3)
     {
-
         slowPrint("Albert screams at you to get inside....as soon as you enter..the shooting starts", 30);
         pause(1000);
         slowPrint("Albert gets injured...he screams you have to run...and he stares at you...", 30);
         pause(1000);
-
         slowPrint("will you try to help, or run as a coward? (1.Help, 2.Coward)", 30);
         cin >> coward;
 
         switch (coward)
         {
-
+        // Here you try to help him
         case 1:
             slowPrint("You will not just go...and take the shootgun to cover him...", 30);
             pause(1000);
 
             slowPrint("Shoot? (y/n)", 30);
             cin >> shoot;
-
+            //You already choosed to help him, you now can shoot or not
             do
             {
                 cout << "Do you want to shoot? (y/n): ";
@@ -310,11 +341,19 @@ void Final(GameState &state)
 
                 if (shoot == 'y' || shoot == 'Y')
                 {
+                    if(state.score <= 29){
                     slowPrint("You decided to shoot... but because of the nerves, the knockback hurts your arm.", 30);
                     state.health -= 1;
                     state.honor += 30;
                     state.friendship += 20;
                     pause(1000);
+                    }else if(state.score >=30){
+                    slowPrint("You decided to shoot..and with experience, you hit a soldier without getting hurt",30);
+                    state.honor +=30;
+                    state.friendship += 20;
+                    pause(1000);
+                    }
+
                 }
                 else if (shoot == 'n' || shoot == 'N')
                 {
@@ -332,12 +371,12 @@ void Final(GameState &state)
                     state.friendship -= 2;
                 }
             } while (shoot != 'y' && shoot != 'Y' && shoot != 'n' && shoot != 'N');
-
+            //Still, you could not save him
             pause(1000);
             slowPrint("But...there is nothing you can do.....they are still comming...", 30);
             pause(1000);
             slowPrint("Albert: Just run and do not look back...If you really care oabout our friendship, run away.", 30);
-            
+            //Here is where he helps you if you need it, gives you a weapon
             if(state.weapon == 0){
             slowPrint("Albert: And take this....",30);
             state.weapon += 1;
@@ -348,6 +387,7 @@ void Final(GameState &state)
             break;
 
         case 2:
+            //Here you show how coward you are, and decide to run
             slowPrint("He did not even said his sentence when you started running", 30);
             pause(1000);
             state.honor -= 30;
@@ -356,12 +396,13 @@ void Final(GameState &state)
             break;
 
         default:
+            //If you try to be funny, this will show
             slowPrint("You are just a coward.", 30);
             state.honor -= 40;
             state.friendship -= 15;
             break;
         }
-    }
+    }// If you did not made it right with Albert, this will happen
     else if (state.friendship <= 1)
     {
         slowPrint("Albert screams at you to stop....and he points the shootgun at you.", 30);
@@ -372,8 +413,8 @@ void Final(GameState &state)
     }
 
 
-
-    if (state.weapon = 1)
+    //If you won the first level, or if Albert gave you the knife, this shows
+    if (state.weapon == 1)
     {
         slowPrint("You are now in the forest...injured and alone..with a knife.", 30);
         pause(1000);
@@ -396,7 +437,7 @@ void Final(GameState &state)
 
         slowPrint("THE FINAL FIGHT STARTED", 30);
         pause(1000);
-
+        //Here starts the fight, you can protect, figtht or use an item
         while (p.health > 0 && state.health > 0)
         {
 
@@ -417,10 +458,9 @@ void Final(GameState &state)
             case 1:
                 slowPrint("You choose to fight", 30);
                 p.health -= 2.0;
-                if (p.health < 0)
-                    p.health = 0;
+                if (p.health < 0){
+                    p.health = 0;}
                 slowPrint(" You hit the enemy for 2 damage!", 30);
-                break;
                 break;
 
             case 2:
@@ -448,15 +488,16 @@ void Final(GameState &state)
 
             default:
                 slowPrint("INVALID OPTION, You did nothing and took damage", 30);
-                health -= 0.5;
+                state.health -= 0.5;
             }
         }
-
+// If the boss runs out of health, you win
 if(state.health >0 && p.health <0){
 slowPrint("You...You won, for you, for the town...for Albert.",30);
 pause(1000);
 slowPrint("The last problem you have to face is...the landmines...",30);
 pause(1000);
+// If the you run out of health, he wins
 }else if(state.health < 0 && p.health > 0){
 slowPrint("You did all you could....but it was not enough...",30);
 pause(1000);
@@ -464,7 +505,7 @@ slowPrint("Cristiani: One more or one less...no one cares.",30);
 pause(1500);
 return;
 }
-
+// If you failed the first and Albert did not gave you a weapon, this happens
 }else if(state.weapon == 0){
 
     slowPrint("You are now in the forest...injured and alone..unarmed.", 30);
@@ -486,10 +527,4 @@ return;
     state.currentStage = 4;
     saveProgress(state);
 }
-
-
-
-
-
-
 }

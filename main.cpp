@@ -1,16 +1,16 @@
-#include "historia.h"
-#include "nivel1.h"
-#include "nivel2.h"
-#include "nivel3.h"
-#include "juego.h"
-#include "utils.h"
-#include <iostream>
-#include "controlador.h"
+#include "./src/controlador.cpp"
+#include "./src/historia.cpp"
+#include "./src/utils.cpp"
+#include "./src/gamestate.cpp"
+#include "./src/nivel1.cpp"
+#include "./src/nivel2.cpp"
+#include "./src/nivel3.cpp"
+#include "./src/juego.cpp"
 using namespace std;
 
 
-
+//The main cpp
 int main() {
-    iniciarJuego();
+    startGame();
     return 0;
 }

@@ -1,6 +1,8 @@
 #ifndef NIVEL2_H
 #define NIVEL2_H
 
-bool nivel2();
+#include "gamestate.h"
+// Function for level 2: Password challenge
+bool level2(GameState& state);
 
 #endif

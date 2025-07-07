@@ -1,41 +1,53 @@
 #include "nivel2.h"
 #include "utils.h"
+#include "gamestate.h"
 #include <iostream>
+#include <cstdlib>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
-bool nivel2() {
-    clearScreen();
-    imprimirLento(" NIVEL 2: La Contraseña\n", 40);
+// Level 2: Guess the password
+bool level2(GameState& state) {
+    slowPrint(" LEVEL 2: The password\n", 40);
     pause(1000);
-    imprimirLento("Chepe llega a la base guerrillera, pero los guardias no lo reconocen.", 30);
+    slowPrint("Now... in front of the door, the soldiers do not recognize you.", 30);
     pause(1500);
-    imprimirLento("Debe decir la contraseña secreta para que lo dejen entrar.", 30);
+    slowPrint("You know you cannot just walk in and they will not just open... you need a password.", 30);
     pause(1500);
-    imprimirLento("Uno de los guardias murmura: 'La palabra clave siempre ha sido nuestra causa...'", 30);
+    slowPrint("While you think about a password that would fit for Cristiani... you hear two soldiers...", 30);
     pause(1500);
-    imprimirLento("¿Podria ser acaso.......?", 30);
+    slowPrint("Soldier 1: How long will it take to return to PEACE...?", 30);
     pause(1500);
-    cout << "\nPresiona ENTER para intentar ingresar...\n";
-    cin.ignore();
-    cin.get();
-    clearScreen();
+    slowPrint("Soldier 2: You know it is not going to be any time soon...", 30);
+    pause(1500);
 
-    string palabra = "resistencia";
-    string intento;
-    int intentos = 3;
+    string word = "Peace";  // Correct password
+    string attempt;
+    int attempts = 3;       // Number of tries allowed
 
-    while (intentos--) {
-        cout << "Contraseña: ";
-        cin >> intento;
-        if (intento == palabra) {
-            mensajeFinal(" Contraseña correcta. Bienvenido, comandante.");
-            return true;
+    while (attempts--) {
+        cout << "Password: ";
+        cin >> attempt;
+        if (attempt == word) {
+            slowPrint("Correct password. Welcome, commander.", 30);
+            pause(1000);
+            state.score = 15;
+            state.honor += 20;
+            state.currentStage = 2;  // Mark level 2 as completed
+            saveProgress(state);
+            return true;  // Success
         } else {
-            cout << " Incorrecto. Te quedan " << intentos << " intentos.\n";
+            slowPrint("Incorrect. You have ", 30);
+            cout << attempts;
+            slowPrint(" attempts left.\n", 30);
+            pause(1000);
         }
     }
 
+    // Failed to guess password
+    state.honor -= 20;
+    saveProgress(state);
     return false;
 }
