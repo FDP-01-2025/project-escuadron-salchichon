@@ -251,16 +251,10 @@ if you just fail or choose a bad option.
 
 2. Please wait until the game ask you to do something, if you do not wwait, it will also be taken as an invalid option.
 
-
-
-
-### MOCKUPS
+### MOCKUP:
 
 
 1.The forest:
-
-
-
 
                      #########                                         
                     ###########                           ###         ###
@@ -270,22 +264,6 @@ if you just fail or choose a bad option.
          ###            | |                ######          |         # | /
           |/            | |               ########         |          \|/
           |             | |                ########        |           |
-
-
-2.Military base:
-
-
-      \|/
-       |
- /‾‾‾‾‾‾‾‾‾‾‾‾‾‾\      /‾‾‾‾‾‾‾‾‾‾‾‾\       /‾‾‾‾‾‾‾‾‾‾‾‾\
-/      /\        \    /              \     /              \
-|     |  |       |    |              |     |              |
-|_____|__|_______|    |______________|     |______________|
-
-
-
-
-
 
 ## TEAM
 
