@@ -10,7 +10,6 @@ Our project consists of a visual novel type game set in the time of the civil wa
 
 Our project has many Themes and Settings:
 
-
 1.Albert house: A house, owned by Albert, a friend of our protagonistt.
 2.The forest: A forest between Albert house and the main town.
 3.The main town: The town where all the villagers live.
@@ -18,7 +17,6 @@ Our project has many Themes and Settings:
 
 
 ## MAIN MECHANIC:
-
 
 Narrative adventure game with branching choices that affect attributes and unlock different endings, combined with exploration mini-games (knife-finding, password guessing) and turn-based combat.
 
