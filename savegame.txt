@@ -1,9 +1,0 @@
-PlayerName: Chepe Buquele 
-Honor: 3 
-Score: 0 
-Lives: 3 
-CurrentSage: 3 
-Friendship: 4 
-Weapon: 0 
-Health: 5 
-Food: 0 
